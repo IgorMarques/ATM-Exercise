@@ -21,3 +21,5 @@ module AtmExercise
     # config.i18n.default_locale = :de
   end
 end
+
+require "trailblazer/rails/railtie"

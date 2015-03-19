@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.6'
+gem 'rails', '4.2'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
@@ -28,7 +28,8 @@ gem 'spring',        group: :development
 gem "reform", git: "https://github.com/apotonick/reform.git"
 gem "trailblazer", git: "https://github.com/apotonick/trailblazer.git"
 
-gem 'foundation-rails'
+gem 'foundation-rails', '5.4.3.1'
+gem 'simple_form'
 gem 'therubyracer', :platform=>:ruby
 
 group :development do

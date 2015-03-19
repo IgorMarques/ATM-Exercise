@@ -8,7 +8,7 @@ class Account < ActiveRecord::Base
     end
 
     def process(params)
-      validate(params) do
+      validate(params, Struct.new(paramssss)) do
         account = Account.find(params[:account])
 
         account.balance -= params[:value]

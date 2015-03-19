@@ -1,0 +1,11 @@
+<% Account.all.each do |ac| %>
+  <p>
+    <%= ac.owner + " - " + ac.balance.to_s %>
+
+    <%= simple_form_for(:debit, url: debit_account_path(ac)) do |f| %>
+      <%= f.input(:value) %>
+
+      <%= f.submit %>
+    <% end %>
+  </p>
+<% end %>
