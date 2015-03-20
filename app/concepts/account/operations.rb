@@ -1,5 +1,4 @@
 class Account < ActiveRecord::Base
-
   class Debit < Trailblazer::Operation
 
     contract do
@@ -8,7 +7,7 @@ class Account < ActiveRecord::Base
     end
 
     def process(params)
-      validate(params, Struct.new(paramssss)) do
+      validate(params, Struct.new(params)) do
         account = Account.find(params[:account])
 
         account.balance -= params[:value]
@@ -17,5 +16,4 @@ class Account < ActiveRecord::Base
       end
     end
   end
-
 end

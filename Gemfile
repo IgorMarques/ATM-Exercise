@@ -32,12 +32,10 @@ gem 'foundation-rails', '5.4.3.1'
 gem 'simple_form'
 gem 'therubyracer', :platform=>:ruby
 
-group :development do
-  gem 'better_errors'
-end
-
 group :development, :test do
   gem 'sqlite3'
+  gem 'byebug'
+  gem 'web-console'
 end
 
 group :production do

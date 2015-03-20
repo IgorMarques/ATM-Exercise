@@ -1,4 +1,4 @@
-require_relative "../concepts/accounts/business.rb"
+#require_relative "../concepts/accounts/business.rb"
 
 class AccountsController < ApplicationController
   include Trailblazer::Operation::Controller
