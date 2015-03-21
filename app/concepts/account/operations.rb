@@ -1,19 +1,30 @@
 class Account < ActiveRecord::Base
   class Debit < Trailblazer::Operation
+    attr_reader :model
+
+    DebitForm = Struct.new(:account, :value)
+    
 
     contract do
       property :account, validates: {presence: true}
-      property :value,  validates: {presence: true}
+      property :value, validates: {presence: true}
     end
 
     def process(params)
-      validate(params, Struct.new(params)) do
-        account = Account.find(params[:account])
+      @model = DebitForm
 
-        account.balance -= params[:value]
-
+      validate(params, DebitForm.new(params)) do |f|
+        account = Account.find(f.account)
+        account.balance -= f.value
         account.save
       end
+
+      self
     end
+
+    def setup_params!(params)
+      params.merge!({account: params[:id], value: BigDecimal.new(params[:debit][:value])})
+    end
+
   end
 end

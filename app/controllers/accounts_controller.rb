@@ -1,5 +1,3 @@
-#require_relative "../concepts/accounts/business.rb"
-
 class AccountsController < ApplicationController
   include Trailblazer::Operation::Controller
 
@@ -7,9 +5,11 @@ class AccountsController < ApplicationController
   end
 
   def debit
-    run Account::Debit[params] do
-      redirect_to accounts_path
+    Account::Debit.run(params) do |op|
+      return redirect_to accounts_path
     end
+
+    render :index
   end
 
 end

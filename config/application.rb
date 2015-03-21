@@ -22,6 +22,8 @@ module AtmExercise
   end
 end
 
+require 'reform/rails'
+
 module Trailblazer
   class Railtie < Rails::Railtie
     def self.autoload_crud_operations(app)
