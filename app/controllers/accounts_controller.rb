@@ -2,6 +2,7 @@ class AccountsController < ApplicationController
   include Trailblazer::Operation::Controller
 
   def index
+    @accounts = Account.all
   end
 
   def debit

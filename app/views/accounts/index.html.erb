@@ -1,4 +1,6 @@
-<% Account.all.each do |ac| %>
+
+
+<% @accounts.each do |ac| %>
   <p>
     <%= ac.owner + " - " + ac.balance.to_s %>
 
