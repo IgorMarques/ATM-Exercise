@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20150319172801) do
 
-  create_table "accounts", force: true do |t|
+  create_table "accounts", force: :cascade do |t|
     t.decimal "balance"
     t.string  "owner"
   end
