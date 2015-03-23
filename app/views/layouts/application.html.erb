@@ -6,15 +6,18 @@
 
     <title><%= content_for?(:title) ? yield(:title) : "Banco Configuração - Aqui seu Dinheiro não muda de mãos!" %></title>
 
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400' rel='stylesheet' type='text/css'>
+
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= javascript_include_tag "application" 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
+
   </head>
 
   <body>
     <div class="row">
-      <div class="small-6 small-centered columns">
+      <div class="small-12 medium-6 medium-centered columns">
         <%= yield %>
       </div>
     </div>
