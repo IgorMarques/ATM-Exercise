@@ -32,6 +32,8 @@ gem 'foundation-rails', '5.4.3.1'
 gem 'simple_form'
 gem 'therubyracer', :platform=>:ruby
 
+gem 'draper', '~> 1.3'
+
 group :development, :test do
   gem 'sqlite3'
   gem 'byebug'
