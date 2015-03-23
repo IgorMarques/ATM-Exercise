@@ -1,13 +1,16 @@
-
+<h2 class="text-center">Banco Configuração</h2>
 
 <% @accounts.each do |ac| %>
+  <hr>
   <p>
-    <%= ac.owner + " - " + ac.balance.to_s %>
+
+    <h4 class="left"><%= ac.owner %></h4>
+    <h4 class="subheader right"><%= ac.balance.to_s %></h4>
 
     <%= simple_form_for(:debit, url: debit_account_path(ac)) do |f| %>
-      <%= f.input(:value) %>
+      <%= f.input(:value, label: false) %>
 
-      <%= f.submit %>
+      <%= f.submit class:"button tiny alert", value: 'DEBITAR' %>
     <% end %>
   </p>
 <% end %>
