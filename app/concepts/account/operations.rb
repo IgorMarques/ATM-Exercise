@@ -3,11 +3,11 @@ class Account < ActiveRecord::Base
     attr_reader :model
 
     DebitForm = Struct.new(:account, :value)
-    
+
 
     contract do
       property :account, validates: {presence: true}
-      property :value, validates: {presence: true}
+      property :value, validates: {presence: true, numericality: true}
     end
 
     def process(params)
