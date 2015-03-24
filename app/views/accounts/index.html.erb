@@ -7,11 +7,13 @@
     <h4 class="left"><%= ac.owner %></h4>
     <h4 class="subheader right"><%= ac.balance.to_s %></h4>
 
-    <%= simple_form_for(:debit, url: debit_account_path(ac)) do |f| %>
+    <%= simple_form_for(:process_transaction, url: process_transaction_account_path(ac)) do |f| %>
       <%= f.input(:value, label: false, placeholder: "Valor", input_html: {type: "number"}) %>
 
       <%= f.submit class:"button tiny alert", value: 'DEBITAR' %>
-      <a href="#" class="button tiny disabled success">CREDITAR</a>
+      <%= f.submit class:"button tiny success", value: 'CREDITAR' %>
+
+      <!-- <a href="#" class="button tiny disabled success">CREDITAR</a> -->
       <a href="#" class="button tiny disabled">TRANSFERIR</a>
     <% end %>
   </p>

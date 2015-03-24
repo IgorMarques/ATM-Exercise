@@ -22,11 +22,11 @@ class Account < ActiveRecord::Base
     end
 
     def setup_params!(params)
-      params.merge!({account: params[:id], value: BigDecimal.new(params[:debit][:value])})
+      params.merge!({account: params[:id], value: BigDecimal.new(params[:process_transaction][:value])})
     end
 
   end
-  
+
   class Credit < Trailblazer::Operation
     attr_reader :model
 
@@ -50,7 +50,7 @@ class Account < ActiveRecord::Base
     end
 
     def setup_params!(params)
-      params.merge!({account: params[:id], value: BigDecimal.new(params[:credit][:value])})
+      params.merge!({account: params[:id], value: BigDecimal.new(params[:process_transaction][:value])})
     end
 
   end
