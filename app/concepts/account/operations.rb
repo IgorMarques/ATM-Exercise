@@ -30,7 +30,7 @@ class Account < ActiveRecord::Base
   class Credit < Trailblazer::Operation
     attr_reader :model
 
-    Credit = Struct.new(:account, :value)
+    CreditForm = Struct.new(:account, :value)
 
     contract do
       property :account, validates: {presence: true}

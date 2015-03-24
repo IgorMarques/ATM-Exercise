@@ -9,7 +9,13 @@ class AccountsController < ApplicationController
     Account::Debit.run(params) do |op|
       return redirect_to accounts_path
     end
-
+        render :index
+  end
+    
+  def credit
+    Account::Credit.run(params) do |op|
+      return redirect_to accounts_path
+    end
     render :index
   end
 
