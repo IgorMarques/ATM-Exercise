@@ -4,17 +4,36 @@
   <hr>
   <p>
 
-    <h4 class="left"><%= ac.owner %></h4>
-    <h4 class="subheader right"><%= ac.balance.to_s %></h4>
+    <div class="row">
+      <div class="medium-12 columns">
+        <h4 class="left"><%= ac.owner %></h4>
+        <h4 class="subheader right"><%= ac.balance.to_s %></h4>
+      </div>
+    </div>
 
     <%= simple_form_for(:process_transaction, url: process_transaction_account_path(ac)) do |f| %>
-      <%= f.input(:value, label: false, placeholder: "Valor", input_html: {type: "number"}) %>
+      <div class="row">
+        <div class="medium-6 columns">
+          <%= f.input(:value, label: false, placeholder: "Valor", input_html: {type: "number"}) %>
+        </div>
+        <div class="medium-6 columns">
+          <%= f.input(:target_account, label: false, placeholder: "CC destino", input_html: {type: "number"}) %>
+        </div>
+      </div>
 
-      <%= f.submit class:"button tiny alert", value: 'DEBITAR' %>
-      <%= f.submit class:"button tiny success", value: 'CREDITAR' %>
+      <div class="row">
+        <div class="medium-3 columns">
+          <%= f.submit class:"button tiny success", value: 'CREDITAR' %>
+        </div>
+        <div class="medium-3 columns">
+          <%= f.submit class:"button tiny alert action-button", value: 'DEBITAR' %>
+        </div>
+        <div class="medium-6 columns">
+          <a href="#" class="button tiny disabled right">TRANSFERIR</a>
+        </div>
+      </div>
 
       <!-- <a href="#" class="button tiny disabled success">CREDITAR</a> -->
-      <a href="#" class="button tiny disabled">TRANSFERIR</a>
     <% end %>
   </p>
 <% end %>
