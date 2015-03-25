@@ -16,6 +16,8 @@ class Account < ActiveRecord::Base
         account = Account.find(f.account)
         account.balance -= f.value
         account.save
+
+        Log.create(info: "DÉBITO DE #{f.value} NA CONTA #{f.account}")
       end
 
       self
@@ -44,6 +46,8 @@ class Account < ActiveRecord::Base
         account = Account.find(f.account)
         account.balance += f.value
         account.save
+
+        Log.create(info: "CRÉDITO DE #{f.value} NA CONTA #{f.account}")
       end
 
       self
@@ -77,6 +81,8 @@ class Account < ActiveRecord::Base
         target = Account.find(f.target_account)
         target.balance += f.value
         target.save
+
+        Log.create(info: "TRANSFERÊNCIA DE #{f.value} DA CONTA #{f.account} PARA #{f.target_account}")
       end
 
       self
