@@ -15,11 +15,13 @@ class AccountsController < ApplicationController
       Account::Credit.run(params) do |op|
         return redirect_to accounts_path
       end
-    else
-      return redirect_to accounts_path
+    else params[:commit] == "TRANSFERIR"
+      Account::Transfer.run(params) do |op|
+        return redirect_to accounts_path
+      end
     end
 
-    render :index
+    redirect_to accounts_path
   end
 
   def debit
