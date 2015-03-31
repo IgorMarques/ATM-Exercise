@@ -13,7 +13,7 @@ class AccountsController < ApplicationController
       end
     elsif params[:commit] == "CREDITAR"
       Account::Credit.run(params) do |op|
-        return redirect_to accounts_path, notice: 'Crédito no valor #{params[:process_transaction][:value]} para a conta #{params[:process_transaction][:id]} .'
+        return redirect_to accounts_path, notice: "Crédito no valor #{params[:process_transaction][:value]} para a conta #{params[:id]} ."
       end
     else params[:commit] == "TRANSFERIR"
       Account::Transfer.run(params) do |op|

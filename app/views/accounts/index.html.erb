@@ -1,5 +1,14 @@
 <h2 class="text-center">Banco Configuração</h2>
 
+<% flash.each do |name, msg| %>
+  <% if msg.is_a?(String) %>
+    <div data-alert class="alert-box">
+      <%= content_tag :div, msg, :id => "flash_#{name}" %>
+     <!-- <a href="#" class="close">&times;</a> -->
+    </div>
+  <% end %>
+<% end %>
+
 <% @accounts.each do |ac| %>
   <hr>
   <p>
