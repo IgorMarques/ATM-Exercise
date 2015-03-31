@@ -50,7 +50,7 @@ class Account < ActiveRecord::Base
         account.bonus += f.value
 
         if account.bonus >= 10
-          account.balance += 1 * account.bonus.to_i / 10
+          account.balance +=  0.5 * (account.bonus.to_i / 10)
           account.bonus = account.bonus.to_i  % 10
         end
 
