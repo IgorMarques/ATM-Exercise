@@ -17,7 +17,7 @@ class AccountsController < ApplicationController
       end
     else params[:commit] == "TRANSFERIR"
       Account::Transfer.run(params) do |op|
-        return redirect_to accounts_path
+        return redirect_to accounts_path, notice: "Transferência no valor #{params[:process_transaction][:value]} para a conta #{params[:process_transaction][:target_account]} realizado com sucesso."
       end
     end
 
