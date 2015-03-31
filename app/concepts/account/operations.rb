@@ -45,6 +45,14 @@ class Account < ActiveRecord::Base
       validate(params, CreditForm.new(params)) do |f|
         account = Account.find(f.account)
         account.balance += f.value
+
+        account.bonus += f.value
+
+        if account.bonus >= 10
+          account.balance += 1 * account.bonus.to_i / 10
+          account.bonus = account.bonus.to_i  % 10
+        end
+
         account.save
 
         Log.create(info: "CRÉDITO DE #{f.value} NA CONTA #{f.account}")
