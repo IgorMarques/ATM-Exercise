@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20150325200653) do
   create_table "accounts", force: :cascade do |t|
     t.decimal "balance"
     t.string  "owner"
+    t.decimal "bonus",   default: 0.0
   end
 
   create_table "logs", force: :cascade do |t|

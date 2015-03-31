@@ -3,6 +3,7 @@ class CreateAccounts < ActiveRecord::Migration
     create_table :accounts do |t|
       t.decimal :balance
       t.string  :owner
+      t.decimal :bonus, default: 0
     end
   end
 end
