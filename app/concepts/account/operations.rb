@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Account < ActiveRecord::Base
   class Debit < Trailblazer::Operation
     attr_reader :model

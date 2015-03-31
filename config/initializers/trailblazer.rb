@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require 'trailblazer/operation'
 require 'trailblazer/operation/responder'
 require 'trailblazer/operation/representer'

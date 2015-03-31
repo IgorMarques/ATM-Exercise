@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AccountsController < ApplicationController
   include Trailblazer::Operation::Controller
 
@@ -13,7 +14,7 @@ class AccountsController < ApplicationController
       end
     elsif params[:commit] == "CREDITAR"
       Account::Credit.run(params) do |op|
-        return redirect_to accounts_path, notice: "Crédito no valor #{params[:process_transaction][:value]} para a conta #{params[:id]} realizado com sucesso."
+        return redirect_to accounts_path, notice: "Crédito no valor #{params[:process_transaction][:value]} para a conta #{params[:id]} realizado com sucesso. Saldo de Bônus: #{Account.find(params[:id]).bonus}. Continue usando nossos serviços e acumule bônus."
       end
     else params[:commit] == "TRANSFERIR"
       Account::Transfer.run(params) do |op|
