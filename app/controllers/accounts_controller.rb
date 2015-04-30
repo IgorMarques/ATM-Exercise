@@ -7,10 +7,13 @@ class AccountsController < ApplicationController
   end
 
   def process_transaction
-
     if params[:commit] == "DEBITAR"
       Account::Debit.run(params) do |op|
-        return redirect_to accounts_path, notice: "Débito no valor #{params[:process_transaction][:value]} para a conta #{params[:id]} realizado com sucesso."
+        if !op.errors.empty?
+          return redirect_to accounts_path, notice: op.errors.messages[:value].first
+        else
+          return redirect_to accounts_path, notice: "Débito no valor #{params[:process_transaction][:value]} para a conta #{params[:id]} realizado com sucesso."
+        end
       end
     elsif params[:commit] == "CREDITAR"
       Account::Credit.run(params) do |op|
@@ -29,13 +32,15 @@ class AccountsController < ApplicationController
     Account::Debit.run(params) do |op|
       return redirect_to accounts_path
     end
-        render :index
+    
+    render :index
   end
 
   def credit
     Account::Credit.run(params) do |op|
       return redirect_to accounts_path
     end
+    
     render :index
   end
 

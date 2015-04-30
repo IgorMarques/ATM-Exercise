@@ -16,7 +16,12 @@ class Account < ActiveRecord::Base
       validate(params, DebitForm.new(params)) do |f|
         account = Account.find(f.account)
         account.balance -= f.value
-        account.save
+
+        if account.balance >= 2
+          account.save
+        else
+          self.errors.add(:value, "O saldo mínimo em conta deverá ser R$ 2,00")
+        end
 
         Log.create(info: "DÉBITO DE #{f.value} NA CONTA #{f.account}")
       end
