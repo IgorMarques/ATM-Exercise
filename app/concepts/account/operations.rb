@@ -38,10 +38,11 @@ class Account < ActiveRecord::Base
   class Credit < Trailblazer::Operation
     attr_reader :model
 
-    CreditForm = Struct.new(:account, :value)
+    CreditForm = Struct.new(:account, :value, :description)
 
     contract do
       property :account, validates: {presence: true}
+      property :description, validates: {presence: true}
       property :value, validates: {presence: true, numericality: true}
     end
 
@@ -61,14 +62,17 @@ class Account < ActiveRecord::Base
 
         account.save
 
-        Log.create(info: "CRÉDITO DE #{f.value} NA CONTA #{f.account}")
+        Log.create(info: "CRÉDITO DE #{f.value} NA CONTA #{f.account}/#{f.description}")
       end
 
       self
     end
 
     def setup_params!(params)
-      params.merge!({account: params[:id], value: BigDecimal.new(params[:process_transaction][:value])})
+      params.merge!({
+        account: params[:id], value: BigDecimal.new(params[:process_transaction][:value]),
+        description: params[:process_transaction][:description]
+      })
     end
 
   end
