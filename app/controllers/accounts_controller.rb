@@ -21,7 +21,7 @@ class AccountsController < ApplicationController
       end
     elsif params[:commit] == "CREDITAR POUPANÇA"
       Account::Credit.run(params) do |op|
-        return redirect_to accounts_path, notice: "Crédito na poupança no valor #{params[:process_transaction][:value]} para a conta #{params[:id]} realizado com sucesso. Bônus de #{Account.find(params[:id]).bonus} creditado"
+        return redirect_to accounts_path, notice: "Crédito no valor #{params[:process_transaction][:value]} para a conta #{params[:id]} realizado com sucesso. Bônus de #{Account.find(params[:id]).bonus} creditado"
       end
     else params[:commit] == "TRANSFERIR"
       Account::Transfer.run(params) do |op|
