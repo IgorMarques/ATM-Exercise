@@ -3,10 +3,11 @@ class Account < ActiveRecord::Base
   class Debit < Trailblazer::Operation
     attr_reader :model
 
-    DebitForm = Struct.new(:account, :value)
+    DebitForm = Struct.new(:account, :value, :description)
 
     contract do
       property :account, validates: {presence: true}
+      property :description, validates: {presence: true}
       property :value, validates: {presence: true, numericality: true}
     end
 
@@ -23,7 +24,7 @@ class Account < ActiveRecord::Base
           self.errors.add(:value, "O saldo mínimo em conta deverá ser R$ 2,00")
         end
 
-        Log.create(info: "DÉBITO DE #{f.value} NA CONTA #{f.account}")
+        Log.create(info: "DÉBITO DE #{f.value} NA CONTA #{f.account}/#{f.description}")
       end
 
       self
