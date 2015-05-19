@@ -28,13 +28,19 @@
         <div class="medium-6 columns">
           <%= f.input(:target_account, label: false, placeholder: "CC destino", input_html: {type: "number"}) %>
         </div>
+        <div class="medium-12 columns">
+          <%= f.input(:description, label: false, placeholder: "Descrição") %>
+        </div>
       </div>
 
       <div class="row">
-        <div class="medium-3 columns">
+        <div class="medium-6 columns">
           <%= f.submit class:"button tiny success", value: 'CREDITAR' %>
         </div>
-        <div class="medium-3 columns">
+        <div class="medium-6 columns">
+          <%= f.submit class:"button tiny success", value: 'CREDITAR POUPANÇA' %>
+        </div>
+        <div class="medium-6 columns">
           <%= f.submit class:"button tiny alert action-button", value: 'DEBITAR' %>
         </div>
         <div class="medium-6 columns">
