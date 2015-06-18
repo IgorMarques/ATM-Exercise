@@ -27,13 +27,10 @@ build:
                 echo "ruby version $(ruby --version) running"
                 echo "from location $(which ruby)"
                 echo -p "gem list: $(gem list)"
-            name: rake test
-            code: |
-                rake test
             name: TEST
             code: |
                   gem install flog
-                  find . -name \*.rb | xargs flog > metrics.txt
+                  find . -name \*.rb | xargs flog > metrics.txt --trace --destination "$WERCKER_OUTPUT_DIR"
 
         # Add more steps here:
         # - script:
