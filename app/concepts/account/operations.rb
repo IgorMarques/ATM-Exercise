@@ -16,7 +16,7 @@ class Account < ActiveRecord::Base
 
       validate(params, DebitForm.new(params)) do |f|
         account = Account.find(f.account)
-        account.balance -= f.value
+        account.balance += f.value
 
         if account.balance >= 2
           account.save
