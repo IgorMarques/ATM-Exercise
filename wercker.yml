@@ -30,7 +30,7 @@ build:
             name: TEST
             code: |
                   gem install flog
-                  find . -name \*.rb | xargs flog > metrics.txt --trace --destination "$WERCKER_OUTPUT_DIR"
+                  find . -name \*.rb | xargs flog > metrics.txt --destination "$WERCKER_OUTPUT_DIR"
 
         # Add more steps here:
         # - script:
